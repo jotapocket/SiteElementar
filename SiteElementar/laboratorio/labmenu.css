@@ -1,0 +1,248 @@
+
+/* ===== LABORATÓRIO ELEMENTAR ===== */
+
+/* O estilo-base vem de ../style.css */
+
+.hero {
+  text-align: center;
+  padding: clamp(4rem, 9vw, 7rem) 1.5rem;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent 60%
+    ),
+    var(--surface-soft);
+}
+
+.hero h1 {
+  margin: 1rem auto;
+  max-width: 800px;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 1.75rem;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.primary-button,
+.card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.7rem;
+  background: var(--accent);
+  color: var(--page);
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.primary-button:hover,
+.card-button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.primary-button:focus-visible,
+.card-button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ===== SEÇÃO DE EXPERIMENTOS ===== */
+
+.experiments-section {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+}
+
+.section-heading {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.section-heading h2,
+.about-lab h2 {
+  margin: 0.6rem 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.experiment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.experiment-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.experiment-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.experiment-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1.25rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+}
+
+.atom-icon {
+  background: #e8eaff;
+  color: #174ea6;
+}
+
+.ion-icon {
+  background: #e1f5ed;
+  color: #176b4b;
+}
+
+.bond-icon {
+  background: #fff0d9;
+  color: #88550e;
+}
+
+.experiment-tag {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.experiment-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.45rem;
+  font-weight: 900;
+}
+
+.experiment-card p {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+}
+
+.card-button {
+  margin-top: auto;
+}
+
+.coming-soon {
+  opacity: 0.82;
+}
+
+.coming-label {
+  margin-top: auto;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* ===== SOBRE O LABORATÓRIO ===== */
+
+.about-lab {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto 5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.about-symbol {
+  flex-shrink: 0;
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  color: var(--accent);
+}
+
+.about-lab p {
+  max-width: 700px;
+  color: var(--muted);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 1000px) {
+  .experiment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-lab {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .experiment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-lab {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 1rem 3rem;
+  }
+
+  .hero br {
+    display: none;
+  }
+}
+
+/* ===== MOVIMENTO REDUZIDO ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .experiment-card,
+  .primary-button,
+  .card-button {
+    transition: none;
+  }
+
+  .experiment-card:hover,
+  .primary-button:hover,
+  .card-button:hover {
+    transform: none;
+  }
+}

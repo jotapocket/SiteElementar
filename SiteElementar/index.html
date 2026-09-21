@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore os elementos químicos de forma simples e interativa.">
+
+  <title>Elementar — Tabela Periódica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="elements.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">
+    Pular para o conteúdo
+  </a>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Elementar, página inicial">
+      <span class="brand-mark" aria-hidden="true">⚛</span>
+      <span>Elementar</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#tabela">Tabela</a>
+      <a href="#sobre">Sobre</a>
+      <a href="desafio.html">Modo Desafio</a>
+      <a href="laboratorio/labmenu.html">Laboratório</a>
+    </nav>
+
+
+    <div class="accessibility-menu">
+      <button id="accessibilityToggle" class="button button-secondary" type="button" aria-expanded="false"
+        aria-controls="accessibilityPanel">
+        ♿ Acessibilidade
+      </button>
+
+      <section id="accessibilityPanel" class="accessibility-panel" aria-labelledby="accessibilityTitle" hidden>
+        <div class="accessibility-header">
+          <h2 id="accessibilityTitle">Acessibilidade</h2>
+
+          <button id="closeAccessibility" class="button button-secondary" type="button"
+            aria-label="Fechar painel de acessibilidade">
+            ✕
+          </button>
+        </div>
+
+        <!-- TAMANHO DO TEXTO -->
+        <div class="accessibility-option">
+          <h3>Tamanho do texto</h3>
+
+          <div class="text-size-controls">
+            <button id="decreaseText" class="button button-secondary" type="button"
+              aria-label="Diminuir tamanho do texto">
+              A−
+            </button>
+
+            <span id="textSizeValue" aria-live="polite">100%</span>
+
+            <button id="increaseText" class="button button-secondary" type="button"
+              aria-label="Aumentar tamanho do texto">
+              A+
+            </button>
+          </div>
+
+          <button id="resetText" class="text-reset" type="button">
+            Restaurar tamanho padrão
+          </button>
+        </div>
+
+        <!-- ALTO CONTRASTE -->
+        <div class="accessibility-option">
+          <h3>Alto contraste</h3>
+
+          <button id="contrastToggle" class="button button-secondary" type="button" aria-pressed="false">
+            Ativar alto contraste
+          </button>
+        </div>
+
+        <!-- TEMA -->
+        <div class="accessibility-option">
+          <h3>Tema</h3>
+
+          <button id="themeToggle" class="button button-secondary" type="button" aria-pressed="false">
+            🌙 Tema escuro
+          </button>
+        </div>
+
+        <!-- NAVEGAÇÃO PELO TECLADO -->
+        <div class="accessibility-option">
+          <h3>Navegação pelo teclado</h3>
+
+          <p>
+            Use Tab para avançar entre os controles e
+            Shift + Tab para voltar.
+          </p>
+
+          <p>
+            Use Enter ou Espaço para ativar botões
+            e Esc para fechar este painel.
+          </p>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Química sem complicação</p>
+
+      <h1 id="hero-title">
+        Descubra os elementos do nosso mundo.
+      </h1>
+
+      <p>
+        Explore a tabela, encontre um elemento e descubra
+        informações importantes em uma linguagem simples.
+      </p>
+
+      <a class="button button-primary" href="#tabela">
+        Explorar a tabela ↓
+      </a>
+    </section>
+
+    <section id="tabela" class="section" aria-labelledby="table-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Explore</p>
+          <h2 id="table-title">Tabela periódica</h2>
+          <p>Selecione um elemento para ver mais informações.</p>
+        </div>
+      </div>
+
+      <div class="search-row">
+        <label class="search-label" for="searchInput">
+          Buscar por nome, símbolo ou número
+        </label>
+
+        <div class="search-controls">
+          <input id="searchInput" type="search" placeholder="Ex.: Oxigênio, O ou 8" autocomplete="off">
+
+          <button id="clearSearch" class="button button-secondary" type="button">
+            Limpar busca
+          </button>
+        </div>
+      </div>
+
+      <div class="legend" aria-label="Filtrar elementos por grupo">
+        <button class="filter-button" data-filter="all" aria-pressed="true" type="button">
+          Mostrar todos
+        </button>
+
+        <button class="filter-button" data-filter="alkali" aria-pressed="false" type="button">
+          <span class="legend-dot alkali"></span>
+          Metais alcalinos
+        </button>
+
+        <button class="filter-button" data-filter="alkaline" aria-pressed="false" type="button">
+          <span class="legend-dot alkaline"></span>
+          Alcalino-terrosos
+        </button>
+
+        <button class="filter-button" data-filter="metalloid" aria-pressed="false" type="button">
+          <span class="legend-dot metalloid"></span>
+          Semimetais
+        </button>
+
+        <button class="filter-button" data-filter="nonmetal" aria-pressed="false" type="button">
+          <span class="legend-dot nonmetal"></span>
+          Outros não metais
+        </button>
+
+        <button class="filter-button" data-filter="halogen" aria-pressed="false" type="button">
+          <span class="legend-dot halogen"></span>
+          Halogênios
+        </button>
+
+        <button class="filter-button" data-filter="noble" aria-pressed="false" type="button">
+          <span class="legend-dot noble"></span>
+          Gases nobres
+        </button>
+
+        <button class="filter-button" data-filter="transition" aria-pressed="false" type="button">
+          <span class="legend-dot transition"></span>
+          Metais de transição
+        </button>
+
+        <button class="filter-button" data-filter="lanthanide" aria-pressed="false" type="button">
+          <span class="legend-dot lanthanide"></span>
+          Lantanídeos
+        </button>
+
+        <button class="filter-button" data-filter="actinide" aria-pressed="false" type="button">
+          <span class="legend-dot actinide"></span>
+          Actinídeos
+        </button>
+
+        <button class="filter-button" data-filter="post-transition" aria-pressed="false" type="button">
+          <span class="legend-dot post-transition"></span>
+          Metais pós-transição
+        </button>
+      </div>
+
+      <p id="resultsStatus" class="status-text" role="status" aria-live="polite">
+        Carregando elementos…
+      </p>
+
+      <div class="table-layout">
+        <div id="periodicTable" class="periodic-table" role="group" aria-label="Elementos da tabela periódica"></div>
+
+        <aside id="elementDetails" class="details-panel" aria-labelledby="detailTitle" aria-live="polite">
+          <div class="empty-detail">
+            <span class="detail-symbol" aria-hidden="true">?</span>
+            <h3 id="detailTitle">Escolha um elemento</h3>
+            <p>As informações aparecerão aqui.</p>
+          </div>
+        </aside>
+      
+      </div>
+
+      <!-- COMPARAÇÃO DE ELEMENTOS -->
+      <section
+        id="comparisonSection"
+        class="comparison-section"
+        aria-labelledby="comparisonTitle"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Compare</p>
+            <h2 id="comparisonTitle">Comparação de elementos</h2>
+            <p>
+              Selecione dois elementos na tabela para comparar
+              suas propriedades lado a lado.
+            </p>
+          </div>
+        </div>
+
+        <p id="comparisonStatus" class="status-text" role="status" aria-live="polite">
+          Nenhum elemento selecionado para comparação.
+        </p>
+
+        <div class="comparison-actions">
+          <button
+            id="compareButton"
+            class="button button-primary"
+            type="button"
+            disabled
+          >
+            Comparar selecionados
+          </button>
+
+          <button
+            id="clearComparison"
+            class="button button-secondary"
+            type="button"
+            disabled
+          >
+            Limpar seleção
+          </button>
+        </div>
+
+        <div
+          id="comparisonResult"
+          class="comparison-result"
+          aria-live="polite"
+        >
+          <p>
+            Escolha dois elementos na tabela para começar a comparação.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section id="sobre" class="section about-section">
+      <p class="eyebrow">Sobre o projeto</p>
+
+      <h2>Química para todo mundo.</h2>
+
+      <p>
+        O Elementar é um projeto educativo que busca tornar
+        a tabela periódica mais fácil de explorar, com textos
+        diretos, controles claros e recursos de acessibilidade.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Elementar · Projeto educativo de Química</p>
+  </footer>
+</body>
+
+</html>

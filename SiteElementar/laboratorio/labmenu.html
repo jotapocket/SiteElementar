@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laboratório | Elementar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="labmenu.css">
+    <script src="labmenu.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="../index.html" class="brand">
+            <span class="brand-mark" aria-hidden="true">⚛</span>
+            <span>Elementar</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="../index.html">Tabela periódica</a>
+            <a href="#experimentos">Experimentos</a>
+            <a href="#sobre-lab">Sobre o laboratório</a>
+        </nav>
+
+        <button
+  id="themeToggle"
+  class="button button-secondary"
+  type="button"
+  aria-label="Alternar tema"
+  aria-pressed="false"
+>
+  🌙
+</button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <span class="eyebrow">LABORATÓRIO VIRTUAL</span>
+
+            <h1>Explore a química<br>na prática.</h1>
+
+            <p>
+                Experimente, monte estruturas e descubra como
+                os elementos químicos se comportam.
+            </p>
+
+            <a href="#experimentos" class="primary-button">
+                Explorar experimentos ↓
+            </a>
+        </section>
+
+        <section id="experimentos" class="experiments-section">
+            <div class="section-heading">
+                <span class="eyebrow">MÃO NA MASSA</span>
+                <h2>Escolha seu experimento</h2>
+                <p>
+                    Aprenda química explorando e testando suas próprias ideias.
+                </p>
+            </div>
+
+            <div class="experiment-grid">
+                <article class="experiment-card">
+                    <div class="experiment-icon atom-icon">⚛</div>
+
+                    <span class="experiment-tag">ESTRUTURA ATÔMICA</span>
+
+                    <h3>Monte seu átomo</h3>
+
+                    <p>
+                        Adicione prótons, nêutrons e elétrons.
+                        Descubra como essas partículas definem um átomo.
+                    </p>
+
+                    <a href="exp_atomo/atomo.html" class="card-button">
+                        Acessar experimento →
+                    </a>
+                </article>
+
+                <article class="experiment-card coming-soon">
+                    <div class="experiment-icon ion-icon">＋−</div>
+
+                    <span class="experiment-tag">ÍONS</span>
+
+                    <h3>Construtor de íons</h3>
+
+                    <p>
+                        Investigue como a quantidade de elétrons
+                        influencia a carga elétrica de um átomo.
+                    </p>
+
+                    <span class="coming-label">Em desenvolvimento</span>
+                </article>
+
+                <article class="experiment-card coming-soon">
+                    <div class="experiment-icon bond-icon">⚭</div>
+
+                    <span class="experiment-tag">LIGAÇÕES QUÍMICAS</span>
+
+                    <h3>Construtor de ligações</h3>
+
+                    <p>
+                        Explore como os átomos interagem e formam
+                        ligações químicas.
+                    </p>
+
+                    <span class="coming-label">Em desenvolvimento</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre-lab" class="about-lab">
+            <div class="about-symbol">⚗</div>
+
+            <div>
+                <span class="eyebrow">APRENDER EXPLORANDO</span>
+                <h2>Química além do papel.</h2>
+
+                <p>
+                    O Laboratório Elementar é um espaço de simulações
+                    interativas para compreender conceitos da química
+                    por meio da experimentação virtual.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Elementar — descubra os elementos, explore a química.</p>
+        <a href="../index.html">Voltar à tabela periódica</a>
+    </footer>
+</body>
+
+</html>

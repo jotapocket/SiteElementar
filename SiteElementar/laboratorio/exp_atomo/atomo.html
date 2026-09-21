@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Monte seu próprio átomo e explore prótons, nêutrons e elétrons no Laboratório Elementar.">
+
+  <title>Monte seu Átomo | Elementar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="atomo.css">
+
+  <script src="../../elements.js" defer></script>
+  <script src="atomo.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">
+    Pular para o experimento
+  </a>
+
+  <header class="site-header">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">⚛</span>
+      <span>Elementar</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="../../index.html">Tabela periódica</a>
+      <a href="../labmenu.html">Laboratório</a>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="experiment-hero">
+      <div class="hero-content">
+        <span class="eyebrow">LABORATÓRIO VIRTUAL</span>
+
+        <h1>Monte seu átomo</h1>
+
+        <p>
+          Adicione prótons, nêutrons e elétrons e descubra
+          como essas partículas formam um átomo.
+        </p>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Área do experimento">
+
+      <!-- CONTROLES -->
+      <aside class="controls-panel">
+        <div class="panel-heading">
+          <span class="eyebrow">CONSTRUTOR</span>
+          <h2>Partículas</h2>
+          <p>Digite a quantidade desejada ou use os botões.</p>
+        </div>
+
+        <!-- PRÓTONS -->
+        <div class="particle-control">
+          <div class="particle-heading">
+            <span class="particle-dot proton-dot">+</span>
+            <div>
+              <h3>Prótons</h3>
+              <p>Carga positiva</p>
+            </div>
+          </div>
+
+          <div class="counter">
+            <button
+              class="counter-button"
+              id="removeProton"
+              type="button"
+              aria-label="Diminuir prótons"
+            >−</button>
+
+            <input
+              class="counter-input"
+              id="protonCount"
+              type="number"
+              min="1"
+              max="118"
+              value="1"
+              aria-label="Quantidade de prótons"
+            >
+
+            <button
+              class="counter-button"
+              id="addProton"
+              type="button"
+              aria-label="Aumentar prótons"
+            >+</button>
+          </div>
+        </div>
+
+        <!-- NÊUTRONS -->
+        <div class="particle-control">
+          <div class="particle-heading">
+            <span class="particle-dot neutron-dot">●</span>
+            <div>
+              <h3>Nêutrons</h3>
+              <p>Sem carga elétrica</p>
+            </div>
+          </div>
+
+          <div class="counter">
+            <button
+              class="counter-button"
+              id="removeNeutron"
+              type="button"
+              aria-label="Diminuir nêutrons"
+            >−</button>
+
+            <input
+              class="counter-input"
+              id="neutronCount"
+              type="number"
+              min="0"
+              max="300"
+              value="0"
+              aria-label="Quantidade de nêutrons"
+            >
+
+            <button
+              class="counter-button"
+              id="addNeutron"
+              type="button"
+              aria-label="Aumentar nêutrons"
+            >+</button>
+          </div>
+        </div>
+
+        <!-- ELÉTRONS -->
+        <div class="particle-control">
+          <div class="particle-heading">
+            <span class="particle-dot electron-dot">−</span>
+            <div>
+              <h3>Elétrons</h3>
+              <p>Carga negativa</p>
+            </div>
+          </div>
+
+          <div class="counter">
+            <button
+              class="counter-button"
+              id="removeElectron"
+              type="button"
+              aria-label="Diminuir elétrons"
+            >−</button>
+
+            <input
+              class="counter-input"
+              id="electronCount"
+              type="number"
+              min="0"
+              max="118"
+              value="1"
+              aria-label="Quantidade de elétrons"
+            >
+
+            <button
+              class="counter-button"
+              id="addElectron"
+              type="button"
+              aria-label="Aumentar elétrons"
+            >+</button>
+          </div>
+        </div>
+
+        <button
+          class="button button-secondary reset-button"
+          id="resetAtom"
+          type="button"
+        >
+          <span aria-hidden="true">↺</span>
+          Reiniciar átomo
+        </button>
+
+        <p class="control-note">
+          Limites da simulação: até 118 prótons, 300 nêutrons
+          e 118 elétrons.
+        </p>
+      </aside>
+
+      <!-- VISUALIZAÇÃO -->
+      <section class="atom-panel" aria-labelledby="visualTitle">
+        
+<div class="atom-panel-heading">
+  <div>
+    <span class="eyebrow">VISUALIZAÇÃO</span>
+    <h2 id="visualTitle">Modelo de Bohr</h2>
+  </div>
+
+  <span class="model-badge" id="modelBadge">
+    Modelo 1 de 2
+  </span>
+</div>
+
+<div class="model-switch" aria-label="Escolher modelo atômico">
+  <button
+    class="model-button active"
+    id="bohrButton"
+    type="button"
+    aria-pressed="true"
+  >
+    Modelo de Bohr
+  </button>
+
+  <button
+    class="model-button"
+    id="cloudButton"
+    type="button"
+    aria-pressed="false"
+  >
+    Nuvem eletrônica
+  </button>
+</div>
+
+        <div
+          class="atom-stage"
+          id="atomStage"
+          role="img"
+          aria-label="Representação do átomo no modelo de Bohr"
+        >
+          <svg
+            id="atomSvg"
+            class="atom-svg"
+            viewBox="0 0 600 600"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <g id="shellsLayer"></g>
+            <g id="nucleusLayer"></g>
+            <g id="electronsLayer"></g>
+          </svg>
+        </div>
+
+        <div class="legend" aria-label="Legenda das partículas">
+          <span><i class="legend-dot proton-dot"></i> Próton</span>
+          <span><i class="legend-dot neutron-dot"></i> Nêutron</span>
+          <span><i class="legend-dot electron-dot"></i> Elétron</span>
+        </div>
+
+        <p class="visual-note">
+          Representação simplificada: os tamanhos e as distâncias
+          não estão em escala real.
+        </p>
+      </section>
+
+      <!-- INFORMAÇÕES -->
+      <aside class="info-panel">
+        <span class="eyebrow">SEU ÁTOMO</span>
+
+        <div class="element-card">
+          <span class="element-number" id="atomicNumber">1</span>
+          <strong class="element-symbol" id="elementSymbol">H</strong>
+          <span class="element-name" id="elementName">Hidrogênio</span>
+        </div>
+
+        <div class="info-list">
+          <div class="info-row">
+            <span>Número atômico (Z)</span>
+            <strong id="infoZ">1</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Número de massa (A)</span>
+            <strong id="infoA">1</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Carga elétrica</span>
+            <strong id="infoCharge">0</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Camadas ocupadas</span>
+            <strong id="infoShells">1</strong>
+          </div>
+        </div>
+
+        <div class="atom-status" id="atomStatus" aria-live="polite">
+          Átomo eletricamente neutro.
+        </div>
+
+        <div class="mini-explanation">
+          <h3>Você sabia?</h3>
+          <p id="atomFact">
+            O número de prótons determina qual é o elemento químico.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SEÇÃO EDUCATIVA -->
+    <section class="learn-section">
+      <span class="eyebrow">ENTENDA O QUE ACONTECE</span>
+      <h2>O que muda quando você monta um átomo?</h2>
+
+      <div class="concept-grid">
+        <article class="concept-card">
+          <span class="concept-symbol proton-text">+</span>
+          <h3>Prótons</h3>
+          <p>
+            Determinam o número atômico e a identidade
+            do elemento químico.
+          </p>
+        </article>
+
+        <article class="concept-card">
+          <span class="concept-symbol neutron-text">●</span>
+          <h3>Nêutrons</h3>
+          <p>
+            Contribuem para a massa do átomo e ajudam
+            a caracterizar seus isótopos.
+          </p>
+        </article>
+
+        <article class="concept-card">
+          <span class="concept-symbol electron-text">−</span>
+          <h3>Elétrons</h3>
+          <p>
+            Influenciam a carga elétrica do átomo
+            e suas interações químicas.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Elementar — descubra os elementos, explore a química.</p>
+    <a href="../labmenu.html">Voltar ao laboratório</a>
+  </footer>
+</body>
+
+</html>
