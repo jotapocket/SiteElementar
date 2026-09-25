@@ -1,0 +1,1221 @@
+/* =================================
+   SIMULADOR DE REAÇÕES — ELEMENTAR
+================================= */
+
+
+/* =================================
+   HERO
+================================= */
+
+.reaction-hero {
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.reaction-hero > * {
+  max-width: 760px;
+}
+
+
+/* =================================
+   SEÇÃO DO SIMULADOR
+================================= */
+
+.reaction-section {
+
+  max-width: 1500px;
+
+  margin: auto;
+
+  padding:
+    clamp(2rem, 5vw, 4rem)
+    clamp(1rem, 4vw, 3rem);
+}
+
+.reaction-layout {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, 340px)
+    minmax(0, 1fr);
+
+  gap: 1.5rem;
+
+  align-items: stretch;
+}
+
+
+/* =================================
+   PAINÉIS
+================================= */
+
+.reaction-sidebar,
+.reaction-main,
+.reaction-learning {
+
+  border: 1px solid var(--border);
+
+  border-radius: 1rem;
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow);
+}
+
+.reaction-sidebar {
+  padding: 1.5rem;
+}
+
+.reaction-main {
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+
+/* =================================
+   SIDEBAR
+================================= */
+
+.sidebar-heading {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-heading h2 {
+
+  margin: 0 0 0.5rem;
+
+  font-size: 1.35rem;
+
+  line-height: 1.25;
+}
+
+.sidebar-description {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  line-height: 1.55;
+}
+
+
+/* =================================
+   OPÇÕES DE REAÇÃO
+================================= */
+
+.reaction-options {
+
+  display: grid;
+
+  gap: 0.75rem;
+}
+
+.reaction-option {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  width: 100%;
+
+  min-height: 76px;
+
+  padding: 0.8rem;
+
+  border: 2px solid var(--border);
+
+  border-radius: 0.8rem;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  text-align: left;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.2s;
+}
+
+.reaction-option:hover {
+
+  border-color: var(--accent);
+
+  transform: translateY(-1px);
+}
+
+.reaction-option:focus-visible {
+
+  outline: 4px solid var(--focus);
+
+  outline-offset: 3px;
+}
+
+.reaction-option.active {
+
+  border-color: var(--accent);
+
+  background: var(--surface-soft);
+
+  box-shadow:
+    0 0 0 1px var(--accent);
+}
+
+
+/* Número */
+
+.option-number {
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 38px;
+
+  height: 38px;
+
+  border-radius: 0.65rem;
+
+  background: var(--surface-soft);
+
+  color: var(--accent);
+
+  font-weight: 800;
+
+  font-size: 0.8rem;
+}
+
+
+/* Texto */
+
+.option-content {
+
+  display: grid;
+
+  gap: 0.25rem;
+
+  min-width: 0;
+}
+
+.option-content strong {
+
+  font-size: 0.9rem;
+
+  line-height: 1.35;
+}
+
+.option-content small {
+
+  color: var(--muted);
+
+  font-size: 0.78rem;
+}
+
+
+/* Seta */
+
+.option-arrow {
+
+  margin-left: auto;
+
+  color: var(--accent);
+
+  font-size: 1.5rem;
+}
+
+
+/* =================================
+   NOTA DA SIDEBAR
+================================= */
+
+.reaction-sidebar-note {
+
+  margin-top: 1.5rem;
+
+  padding: 1rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.8rem;
+
+  background: var(--surface-soft);
+
+  line-height: 1.5;
+}
+
+.reaction-sidebar-note strong {
+
+  display: block;
+
+  margin-bottom: 0.4rem;
+}
+
+.reaction-sidebar-note p {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+
+/* =================================
+   CABEÇALHO DA REAÇÃO
+================================= */
+
+.reaction-title-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.reaction-title-row .eyebrow {
+  margin-bottom: 0.3rem;
+}
+
+.reaction-title-row h2 {
+
+  margin: 0;
+
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+}
+
+.reaction-status {
+
+  flex-shrink: 0;
+
+  padding: 0.45rem 0.75rem;
+
+  border-radius: 999px;
+
+  background: var(--surface-soft);
+
+  border: 1px solid var(--border);
+
+  color: var(--accent);
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+}
+
+.reaction-status.finished {
+
+  background: var(--surface-soft);
+
+  color: var(--accent);
+}
+
+
+/* =================================
+   PALCO DAS REAÇÕES
+================================= */
+
+.reaction-stage {
+
+  position: relative;
+
+  width: 100%;
+
+  height: clamp(280px, 42vw, 390px);
+
+  border: 1px solid var(--border);
+
+  border-radius: 1rem;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(100, 150, 220, 0.10),
+      transparent 70%
+    ),
+    var(--surface-soft);
+
+  overflow: hidden;
+}
+
+.reaction-svg {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  min-height: 0;
+}
+
+
+/* =================================
+   RÓTULOS DO PALCO
+================================= */
+
+.stage-label {
+
+  position: absolute;
+
+  z-index: 2;
+
+  top: 0.85rem;
+
+  padding: 0.4rem 0.6rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.5rem;
+
+  background: var(--surface);
+
+  color: var(--muted);
+
+  font-size: 0.68rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  pointer-events: none;
+}
+
+.stage-label-left {
+  left: 0.85rem;
+}
+
+.stage-label-right {
+  right: 0.85rem;
+}
+
+
+/* Placeholder */
+
+.stage-placeholder {
+
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  color: var(--muted);
+
+  text-align: center;
+}
+
+.stage-placeholder[hidden] {
+  display: none;
+}
+
+
+/* =================================
+   CONTROLES
+================================= */
+
+.reaction-controls {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+  margin: 1.1rem 0;
+}
+
+.start-reaction-btn,
+.reset-reaction-btn {
+
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 48px;
+}
+
+.start-reaction-btn {
+  flex: 1;
+}
+
+
+/* =================================
+   EQUAÇÃO
+================================= */
+
+.reaction-equation-card {
+
+  padding: 1.1rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.9rem;
+
+  background: var(--surface-soft);
+
+  text-align: center;
+}
+
+.equation-label {
+
+  display: block;
+
+  margin-bottom: 0.55rem;
+
+  color: var(--accent);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+.reaction-equation {
+
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+
+  font-weight: 800;
+
+  letter-spacing: 0.02em;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =================================
+   EXPLICAÇÃO
+================================= */
+
+.reaction-explanation {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.85rem;
+
+  margin-top: 1.1rem;
+
+  padding: 1.1rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.9rem;
+}
+
+.explanation-icon {
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 30px;
+
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: var(--surface-soft);
+
+  color: var(--accent);
+
+  font-weight: 800;
+}
+
+.reaction-explanation h3 {
+
+  margin: 0.1rem 0 0.45rem;
+
+  font-size: 1rem;
+}
+
+.reaction-explanation p {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  line-height: 1.6;
+}
+
+
+/* =================================
+   ETAPAS
+================================= */
+
+.reaction-steps {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 0.75rem;
+
+  margin-top: 1.1rem;
+}
+
+.reaction-step {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.6rem;
+
+  padding: 0.85rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.8rem;
+}
+
+.reaction-step span {
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  width: 27px;
+
+  height: 27px;
+
+  border-radius: 50%;
+
+  background: var(--surface-soft);
+
+  color: var(--accent);
+
+  font-weight: 800;
+
+  font-size: 0.8rem;
+}
+
+.reaction-step p {
+
+  margin: 0.1rem 0 0;
+
+  color: var(--muted);
+
+  font-size: 0.83rem;
+
+  line-height: 1.45;
+}
+
+.reaction-step.active {
+
+  border-color: var(--accent);
+
+  background: var(--surface-soft);
+}
+
+
+/* =================================
+   APRENDIZADO
+================================= */
+
+.reaction-learning {
+
+  max-width: 1500px;
+
+  margin:
+    0 auto;
+
+  padding:
+    1.5rem
+    clamp(1rem, 4vw, 3rem);
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 1.5rem;
+
+  align-items: center;
+}
+
+.reaction-learning h2 {
+
+  margin: 0 0 0.6rem;
+
+  font-size: 1.45rem;
+}
+
+.reaction-learning > div:first-child p {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  line-height: 1.6;
+}
+
+.learning-highlight {
+
+  display: flex;
+
+  gap: 0.85rem;
+
+  padding: 1.1rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.9rem;
+
+  background: var(--surface-soft);
+}
+
+.learning-icon {
+
+  color: var(--accent);
+
+  font-size: 1.5rem;
+}
+
+.learning-highlight strong {
+
+  display: block;
+
+  margin-bottom: 0.4rem;
+}
+
+.learning-highlight p {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  line-height: 1.55;
+
+  font-size: 0.9rem;
+}
+
+
+/* =================================
+   AVISO
+================================= */
+
+.simulation-disclaimer {
+
+  max-width: 900px;
+
+  margin:
+    1rem auto
+    3rem;
+
+  padding:
+    0 1rem;
+
+  color: var(--muted);
+
+  text-align: center;
+
+  font-size: 0.8rem;
+
+  line-height: 1.5;
+}
+
+
+/* =================================
+   SVG — ÁTOMOS E MOLÉCULAS
+================================= */
+
+.reaction-atom {
+
+  stroke: rgba(255, 255, 255, 0.9);
+
+  stroke-width: 2;
+}
+
+.reaction-atom-label {
+
+  fill: var(--text);
+
+  font-size: 19px;
+
+  font-weight: 800;
+
+  text-anchor: middle;
+
+  dominant-baseline: middle;
+}
+
+.reaction-molecule-label {
+
+  fill: var(--text);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-anchor: middle;
+}
+
+.reaction-arrow {
+
+  stroke: var(--accent);
+
+  stroke-width: 3;
+
+  stroke-linecap: round;
+
+  fill: none;
+}
+
+.reaction-dash {
+  stroke-dasharray: 7 7;
+}
+
+.reaction-bond {
+
+  stroke: var(--muted);
+
+  stroke-width: 5;
+
+  stroke-linecap: round;
+}
+
+.reaction-particle {
+
+  transition: opacity 0.3s;
+}
+
+
+/* =================================
+   ANIMAÇÕES
+================================= */
+
+@keyframes reaction-fade-in {
+
+  from {
+
+    opacity: 0;
+
+    transform: scale(0.75);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+@keyframes reaction-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.reaction-product {
+
+  animation:
+    reaction-fade-in
+    0.65s
+    ease
+    both;
+}
+
+.reaction-moving {
+
+  animation:
+    reaction-pulse
+    0.8s
+    ease-in-out
+    infinite;
+}
+
+
+/* =================================
+   ANIMAÇÕES DAS CENAS SVG
+================================= */
+
+.reaction-bubble {
+
+  animation:
+    bubble-rise
+    1.8s
+    ease-in
+    infinite;
+
+  transform-box: fill-box;
+
+  transform-origin: center;
+}
+
+@keyframes bubble-rise {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(18px)
+      scale(0.7);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      translateY(-65px)
+      scale(1.1);
+  }
+}
+
+.reaction-product {
+
+  animation:
+    scene-appear
+    0.8s
+    ease
+    both;
+}
+
+@keyframes scene-appear {
+
+  from {
+
+    opacity: 0;
+
+    transform: scale(0.92);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+.reaction-fade {
+
+  animation:
+    scene-fade
+    0.8s
+    ease
+    both;
+}
+
+@keyframes scene-fade {
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+
+/* =================================
+   ANIMAÇÃO DOS COPOS
+================================= */
+
+.pour-left {
+
+  transform-box: fill-box;
+
+  transform-origin: center bottom;
+
+  animation:
+    pour-left
+    0.8s
+    ease-in-out
+    forwards;
+}
+
+.pour-right {
+
+  transform-box: fill-box;
+
+  transform-origin: center bottom;
+
+  animation:
+    pour-right
+    0.8s
+    ease-in-out
+    forwards;
+}
+
+@keyframes pour-left {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  45% {
+    transform: rotate(28deg);
+  }
+
+  75% {
+    transform: rotate(28deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pour-right {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  45% {
+    transform: rotate(-28deg);
+  }
+
+  75% {
+    transform: rotate(-28deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+/* =================================
+   CENA DA VELA
+================================= */
+
+.candle-glass {
+
+  transform:
+    translateY(-115px);
+
+  transition:
+    transform
+    1.2s
+    ease-in-out;
+}
+
+.candle-glass.lowered {
+
+  transform:
+    translateY(0);
+}
+
+.candle-water {
+
+  transition:
+    height 2.8s ease-in-out,
+    y 2.8s ease-in-out;
+}
+
+.candle-flame {
+
+  transform-box: fill-box;
+
+  transform-origin: center bottom;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.candle-flame.extinguished {
+
+  opacity: 0;
+
+  transform:
+    scale(0.1);
+}
+
+
+/* =================================
+   FERRUGEM
+================================= */
+
+.rust-spot {
+
+  opacity: 0;
+
+  transition:
+    opacity 0.7s ease;
+}
+
+.rust-spot.visible {
+  opacity: 1;
+}
+
+
+/* =================================
+   ALTO CONTRASTE
+================================= */
+
+:root[data-contrast="high"] .reaction-stage {
+
+  background: var(--surface-soft);
+}
+
+:root[data-contrast="high"] .stage-label {
+
+  border-color: var(--text);
+
+  color: var(--text);
+}
+
+:root[data-contrast="high"] .reaction-option.active {
+
+  box-shadow:
+    0 0 0 2px var(--accent);
+}
+
+
+/* =================================
+   RESPONSIVIDADE
+================================= */
+
+@media (max-width: 950px) {
+
+  .reaction-layout {
+
+    grid-template-columns: 1fr;
+  }
+
+  .reaction-options {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .reaction-learning {
+
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 760px) {
+
+  .reaction-steps {
+
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .reaction-options {
+
+    grid-template-columns: 1fr;
+  }
+
+  .reaction-title-row {
+
+    flex-direction: column;
+  }
+
+  .reaction-status {
+
+    align-self: flex-start;
+  }
+
+  .reaction-stage {
+
+    height: 280px;
+  }
+
+  .reaction-controls {
+
+    flex-direction: column;
+  }
+
+  .start-reaction-btn,
+  .reset-reaction-btn {
+
+    width: 100%;
+  }
+
+  .reaction-learning {
+
+    padding-top: 2rem;
+  }
+}
+
+
+/* =================================
+   MOVIMENTO REDUZIDO
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reaction-page *,
+  .reaction-page *::before,
+  .reaction-page *::after {
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+
+  .pour-left,
+  .pour-right,
+  .candle-glass,
+  .candle-water,
+  .candle-flame,
+  .rust-spot,
+  .reaction-bubble,
+  .reaction-product,
+  .reaction-fade {
+
+    animation: none !important;
+
+    transition: none !important;
+  }
+}
+
+.site-header .main-nav {
+  flex: 1;
+  justify-content: center;
+}

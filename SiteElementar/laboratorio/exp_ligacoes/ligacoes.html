@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Elementar | Construtor de Ligações</title>
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="../../style.css">
+
+  <!-- Estilo deste experimento -->
+  <link rel="stylesheet" href="ligacoes.css">
+
+  <!-- Preferências de acessibilidade -->
+  <script src="../../accessibility.js" defer></script>
+
+  <!-- Dados dos elementos -->
+  <script src="../../elements.js" defer></script>
+
+  <!-- Lógica do experimento -->
+  <script src="ligacoes.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ================================
+       NAVEGAÇÃO
+  ================================= -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../../index.html"
+      aria-label="Elementar, página inicial"
+    >
+      <span
+        class="brand-mark"
+        aria-hidden="true"
+      >
+        ⚛
+      </span>
+
+      <span>Elementar</span>
+    </a>
+
+    <nav
+      class="main-nav"
+      aria-label="Navegação principal"
+    >
+      <a href="../../index.html">
+        Tabela
+      </a>
+
+      <a href="../labmenu.html">
+        Laboratório
+      </a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <section
+      class="hero bond-hero"
+      aria-labelledby="hero-title"
+    >
+
+      <p class="eyebrow">
+        Laboratório virtual
+      </p>
+
+      <h1 id="hero-title">
+        Construtor de ligações.
+      </h1>
+
+      <p>
+        Combine elementos químicos e descubra como os átomos
+        podem se unir por meio de ligações químicas.
+      </p>
+
+    </section>
+
+
+    <!-- ================================
+         ÁREA PRINCIPAL
+    ================================= -->
+
+    <section
+      class="bond-section"
+      aria-labelledby="bond-workspace-title"
+    >
+
+      <div class="bond-workspace">
+
+        <!-- ESCOLHA DOS ELEMENTOS -->
+
+        <div class="bond-controls">
+
+          <div class="section-heading">
+            <p class="eyebrow">
+              Escolha os elementos
+            </p>
+
+            <h2 id="bond-workspace-title">
+              Monte sua combinação
+            </h2>
+
+            <p>
+              Escolha os elementos que deseja explorar.
+            </p>
+          </div>
+
+
+          <div class="element-selectors">
+
+            <div class="element-selector">
+
+              <label for="elementA">
+                Elemento 1
+              </label>
+
+              <select id="elementA">
+
+                <option value="Na">
+                  Sódio (Na)
+                </option>
+
+                <option value="Cl">
+                  Cloro (Cl)
+                </option>
+
+                <option value="H">
+                  Hidrogênio (H)
+                </option>
+
+                <option value="O">
+                  Oxigênio (O)
+                </option>
+
+                <option value="Mg">
+                  Magnésio (Mg)
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="element-selector">
+
+              <label for="elementB">
+                Elemento 2
+              </label>
+
+              <select id="elementB">
+
+                <option value="Cl">
+                  Cloro (Cl)
+                </option>
+
+                <option value="Na">
+                  Sódio (Na)
+                </option>
+
+                <option value="H">
+                  Hidrogênio (H)
+                </option>
+
+                <option value="O">
+                  Oxigênio (O)
+                </option>
+
+                <option value="Mg">
+                  Magnésio (Mg)
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <button
+            id="buildBond"
+            class="button button-primary"
+            type="button"
+          >
+            Construir ligação
+          </button>
+
+          <button
+            id="resetBond"
+            class="button button-secondary"
+            type="button"
+          >
+            Limpar combinação
+          </button>
+
+        </div>
+
+
+        <!-- VISUALIZAÇÃO -->
+
+        <div class="bond-visual">
+
+          <div class="visual-heading">
+
+            <div>
+              <p class="eyebrow">
+                Visualização
+              </p>
+
+              <h2 id="visualTitle">
+                Sua combinação
+              </h2>
+            </div>
+
+            <span
+              id="bondBadge"
+              class="bond-badge"
+            >
+              Aguardando combinação
+            </span>
+
+          </div>
+
+
+          <div
+            id="bondStage"
+            class="bond-stage"
+          >
+
+            <div
+              class="stage-placeholder"
+              id="stagePlaceholder"
+            >
+              <span aria-hidden="true">
+                ⚛️
+              </span>
+
+              <p>
+                Escolha os elementos para começar!
+              </p>
+            </div>
+
+
+            <svg
+              id="bondSvg"
+              class="bond-svg"
+              viewBox="0 0 600 430"
+              role="img"
+              aria-label="Modelo visual da ligação química"
+            >
+              <g id="bondDiagram"></g>
+            </svg>
+
+          </div>
+
+
+          <p
+            class="visual-caption"
+            id="visualCaption"
+          >
+            Os modelos são representações simplificadas
+            dos átomos e de suas ligações.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         EXPLICAÇÃO
+    ================================= -->
+
+    <section
+      class="bond-explanation-section"
+      aria-labelledby="explanation-section-title"
+    >
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          Entenda a ligação
+        </p>
+
+        <h2 id="explanation-section-title">
+          O que está acontecendo?
+        </h2>
+
+      </div>
+
+
+      <div class="bond-explanation">
+
+        <div class="explanation-card">
+
+          <h3 id="explanationTitle">
+            Vamos descobrir!
+          </h3>
+
+          <p id="explanationText">
+            Selecione dois elementos e construa uma
+            combinação para visualizar uma explicação.
+          </p>
+
+        </div>
+
+
+        <div class="bond-learning">
+
+          <h3>
+            O que você vai aprender
+          </h3>
+
+          <ul>
+
+            <li>
+              O que são elétrons de valência.
+            </li>
+
+            <li>
+              Como funciona a transferência de elétrons.
+            </li>
+
+            <li>
+              Como funciona o compartilhamento de elétrons.
+            </li>
+
+            <li>
+              Diferenças entre ligações iônicas
+              e covalentes.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================================
+       RODAPÉ
+  ================================= -->
+
+  <footer class="site-footer">
+
+    <p>
+      Elementar · Projeto educativo de Química
+    </p>
+
+    <a href="../labmenu.html">
+      Voltar ao laboratório
+    </a>
+
+  </footer>
+
+</body>
+</html>

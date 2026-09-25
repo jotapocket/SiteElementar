@@ -1,51 +1,58 @@
+/* =================================
+   MONTE SEU ÁTOMO
+   Estilos exclusivos do experimento
+================================= */
 
-/* ===== MONTE SEU ÁTOMO ===== */
 
-.experiment-hero {
-  padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
-  text-align: center;
-  background: var(--surface-soft);
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.experiment-hero h1 {
-  margin: 0.5rem 0;
-  font-size: clamp(2.3rem, 5vw, 3.5rem);
-  font-weight: 900;
-}
-
-.experiment-hero p {
-  max-width: 650px;
-  margin: 0 auto;
-  color: var(--muted);
-}
-
-/* ===== ÁREA PRINCIPAL ===== */
+/* =================================
+   ÁREA PRINCIPAL
+================================= */
 
 .workspace {
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(320px, 1.6fr) minmax(220px, 0.8fr);
+
+  grid-template-columns:
+    minmax(220px, 0.8fr)
+    minmax(320px, 1.6fr)
+    minmax(220px, 0.8fr);
+
   align-items: start;
+
   gap: 1.25rem;
+
   max-width: 1500px;
+
   margin: 0 auto;
-  padding: clamp(1rem, 3vw, 2.5rem);
+
+  padding:
+    clamp(1rem, 3vw, 2.5rem);
 }
+
+
+/* =================================
+   PAINÉIS
+================================= */
 
 .controls-panel,
 .atom-panel,
 .info-panel {
   min-width: 0;
+
   padding: 1.25rem;
+
   background: var(--surface);
+
   border: 1px solid var(--border);
+
   border-radius: 1rem;
+
   box-shadow: var(--shadow);
 }
+
+
+/* =================================
+   CABEÇALHOS
+================================= */
 
 .panel-heading {
   margin-bottom: 1.25rem;
@@ -54,117 +61,220 @@
 .panel-heading h2,
 .atom-panel-heading h2 {
   margin: 0.25rem 0;
-  font-size: 1.4rem;
+
+  font-size:
+    calc(1.4rem * var(--text-scale));
+
   font-weight: 900;
 }
 
 .panel-heading p {
   color: var(--muted);
-  font-size: 0.9rem;
+
+  font-size:
+    calc(0.9rem * var(--text-scale));
 }
 
-/* ===== CONTROLES DE PARTÍCULAS ===== */
+
+/* =================================
+   CONTROLES DE PARTÍCULAS
+================================= */
 
 .particle-control {
   display: flex;
+
   flex-direction: column;
+
   gap: 0.9rem;
+
   padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+
+  border-bottom:
+    1px solid var(--border);
 }
 
 .particle-heading {
   display: flex;
+
   align-items: center;
+
   gap: 0.75rem;
 }
 
 .particle-heading h3 {
-  font-size: 1rem;
+  margin: 0;
+
+  font-size:
+    calc(1rem * var(--text-scale));
+
   font-weight: 900;
 }
 
 .particle-heading p {
+  margin: 0;
+
   color: var(--muted);
-  font-size: 0.85rem;
+
+  font-size:
+    calc(0.85rem * var(--text-scale));
 }
+
+
+/* =================================
+   ÍCONES DAS PARTÍCULAS
+================================= */
 
 .particle-dot {
   display: grid;
+
   place-items: center;
+
   flex-shrink: 0;
+
   width: 2.5rem;
   height: 2.5rem;
+
   border-radius: 50%;
-  font-size: 1.2rem;
+
+  font-size:
+    calc(1.2rem * var(--text-scale));
+
   font-weight: 900;
 }
 
+
+/*
+   As cores usam as variáveis do site
+   para funcionar melhor nos temas.
+*/
+
 .proton-dot {
-  background: #ffe3e3;
-  color: #a32121;
+  background: var(--proton-bg, #ffe3e3);
+  color: var(--proton-color, #a32121);
 }
 
 .neutron-dot {
-  background: #e5eaf2;
-  color: #34445c;
+  background: var(--neutron-bg, #e5eaf2);
+  color: var(--neutron-color, #34445c);
 }
 
 .electron-dot {
-  background: #dceeff;
-  color: #14569b;
+  background: var(--electron-bg, #dceeff);
+  color: var(--electron-color, #14569b);
 }
+
+
+/* =================================
+   CONTADOR
+================================= */
 
 .counter {
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
-  align-items: center;
-  gap: 0.75rem;
-}
 
-.counter output {
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
+  grid-template-columns:
+    44px minmax(0, 1fr) 44px;
+
+  align-items: center;
+
+  gap: 0.75rem;
 }
 
 .counter-button {
   display: grid;
+
   place-items: center;
+
   width: 44px;
   height: 44px;
+
   border: 1px solid var(--border);
+
   border-radius: 0.7rem;
+
   background: var(--surface-soft);
+
   color: var(--text);
+
   font-size: 1.4rem;
+
   font-weight: 800;
+
   cursor: pointer;
 }
 
 .counter-button:hover:not(:disabled) {
   border-color: var(--accent);
+
   background: var(--surface-soft);
 }
 
 .counter-button:disabled {
   opacity: 0.35;
+
   cursor: not-allowed;
 }
 
+
+/* =================================
+   CAMPO NUMÉRICO
+================================= */
+
+.counter-input {
+  box-sizing: border-box;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 0.65rem 0.25rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.7rem;
+
+  background: var(--surface-soft);
+
+  color: var(--text);
+
+  text-align: center;
+
+  font-size:
+    calc(1.1rem * var(--text-scale));
+
+  font-weight: 900;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-input:focus-visible {
+  outline: 3px solid var(--focus);
+
+  outline-offset: 2px;
+}
+
+
+/* =================================
+   BOTÃO DE REINICIAR
+================================= */
+
 .reset-button {
   width: 100%;
+
   margin-top: 1.25rem;
 }
 
 .control-note {
   margin-top: 0.8rem;
+
   color: var(--muted);
-  font-size: 0.8rem;
+
+  font-size:
+    calc(0.8rem * var(--text-scale));
 }
 
-/* ===== VISUALIZAÇÃO DO ÁTOMO ===== */
+
+/* =================================
+   VISUALIZAÇÃO DO ÁTOMO
+================================= */
 
 .atom-panel {
   overflow: hidden;
@@ -172,94 +282,250 @@
 
 .atom-panel-heading {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   flex-wrap: wrap;
+
   gap: 0.75rem;
 }
 
 .model-badge {
   padding: 0.4rem 0.65rem;
+
   border: 1px solid var(--border);
+
   border-radius: 2rem;
+
   color: var(--muted);
-  font-size: 0.75rem;
+
+  font-size:
+    calc(0.75rem * var(--text-scale));
+
   font-weight: 800;
 }
 
+
+/* =================================
+   SELETOR DE MODELO
+================================= */
+
+.model-switch {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  margin: 1rem 0;
+}
+
+.model-button {
+  min-height: 44px;
+
+  padding: 0.65rem 1rem;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0.7rem;
+
+  background: var(--surface-soft);
+
+  color: var(--text);
+
+  font: inherit;
+
+  font-size:
+    calc(0.85rem * var(--text-scale));
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.model-button:hover {
+  border-color: var(--accent);
+}
+
+.model-button.active {
+  background: var(--accent);
+
+  color: var(--page);
+
+  border-color: var(--accent);
+}
+
+.model-button:focus-visible {
+  outline: 3px solid var(--focus);
+
+  outline-offset: 3px;
+}
+
+
+/* =================================
+   PALCO DO ÁTOMO
+================================= */
+
 .atom-stage {
   display: grid;
+
   place-items: center;
+
   width: 100%;
   max-width: 600px;
+
   aspect-ratio: 1;
+
   margin: 0 auto;
+
   overflow: hidden;
 }
 
 .atom-svg {
   display: block;
+
   width: 100%;
   height: 100%;
 }
 
+
+/* =================================
+   ÓRBITAS
+================================= */
+
 .shell-orbit {
   fill: none;
+
   stroke: var(--border);
+
   stroke-width: 2;
+
   stroke-dasharray: 5 6;
 }
 
+
+/* =================================
+   NÚCLEO
+================================= */
+
 .nucleus-particle {
   stroke: var(--surface);
+
   stroke-width: 1.5;
 }
 
+.proton-particle {
+  fill: #e85d5d;
+
+  stroke: var(--surface);
+
+  stroke-width: 1.5;
+}
+
+.neutron-particle {
+  fill: #64748b;
+
+  stroke: var(--surface);
+
+  stroke-width: 1.5;
+}
+
+
+/* =================================
+   ELÉTRONS
+================================= */
+
 .electron-particle {
   fill: #2677d4;
+
   stroke: var(--surface);
+
   stroke-width: 2;
 }
 
 .electron-label {
   fill: white;
+
   font-size: 12px;
+
   font-weight: 900;
+
   text-anchor: middle;
+
   dominant-baseline: central;
+
   pointer-events: none;
 }
 
+
+/* =================================
+   NUVEM ELETRÔNICA
+================================= */
+
+.cloud-electron {
+  fill: #2677d4;
+
+  opacity: 0.35;
+}
+
+
+/* =================================
+   LEGENDA
+================================= */
+
 .legend {
   display: flex;
+
   justify-content: center;
+
   flex-wrap: wrap;
+
   gap: 1rem;
+
   padding: 0.5rem 0;
-  font-size: 0.85rem;
+
   color: var(--muted);
+
+  font-size:
+    calc(0.85rem * var(--text-scale));
 }
 
 .legend span {
   display: inline-flex;
+
   align-items: center;
+
   gap: 0.4rem;
 }
 
 .legend-dot {
   display: inline-block;
+
   width: 0.7rem;
   height: 0.7rem;
+
   border-radius: 50%;
 }
 
 .visual-note {
+  margin-bottom: 0;
+
   text-align: center;
+
   color: var(--muted);
-  font-size: 0.8rem;
+
+  font-size:
+    calc(0.8rem * var(--text-scale));
 }
 
-/* ===== INFORMAÇÕES DO ELEMENTO ===== */
+
+/* =================================
+   INFORMAÇÕES DO ELEMENTO
+================================= */
 
 .info-panel > .eyebrow {
   margin-bottom: 0.75rem;
@@ -267,33 +533,57 @@
 
 .element-card {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 0.2rem;
+
   padding: 1.25rem 0.5rem;
+
   background: var(--surface-soft);
+
   border: 1px solid var(--border);
+
   border-radius: 1rem;
 }
 
 .element-number {
   align-self: flex-start;
+
   margin-left: 1rem;
+
   color: var(--muted);
-  font-size: 0.9rem;
+
+  font-size:
+    calc(0.9rem * var(--text-scale));
+
   font-weight: 800;
 }
 
 .element-symbol {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size:
+    calc(clamp(3rem, 5vw, 4.5rem) * var(--text-scale));
+
   line-height: 1;
+
   font-weight: 900;
 }
 
 .element-name {
+  font-size:
+    calc(1rem * var(--text-scale));
+
   font-weight: 800;
+
   text-align: center;
 }
+
+
+/* =================================
+   LISTA DE INFORMAÇÕES
+================================= */
 
 .info-list {
   margin-top: 1rem;
@@ -301,12 +591,20 @@
 
 .info-row {
   display: flex;
+
   justify-content: space-between;
+
   align-items: baseline;
+
   gap: 0.75rem;
+
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.85rem;
+
+  border-bottom:
+    1px solid var(--border);
+
+  font-size:
+    calc(0.85rem * var(--text-scale));
 }
 
 .info-row span {
@@ -315,18 +613,36 @@
 
 .info-row strong {
   text-align: right;
+
   font-variant-numeric: tabular-nums;
 }
 
+
+/* =================================
+   STATUS
+================================= */
+
 .atom-status {
   margin-top: 1rem;
+
   padding: 0.75rem;
+
   border: 1px solid var(--border);
+
   border-radius: 0.75rem;
+
   background: var(--surface-soft);
-  font-size: 0.9rem;
+
+  font-size:
+    calc(0.9rem * var(--text-scale));
+
   font-weight: 800;
 }
+
+
+/* =================================
+   CURIOSIDADE
+================================= */
 
 .mini-explanation {
   margin-top: 1.25rem;
@@ -334,89 +650,152 @@
 
 .mini-explanation h3 {
   margin-bottom: 0.35rem;
-  font-size: 1rem;
+
+  font-size:
+    calc(1rem * var(--text-scale));
 }
 
 .mini-explanation p {
   color: var(--muted);
-  font-size: 0.9rem;
+
+  font-size:
+    calc(0.9rem * var(--text-scale));
 }
 
-/* ===== SEÇÃO EDUCATIVA ===== */
+
+/* =================================
+   SEÇÃO EDUCATIVA
+================================= */
 
 .learn-section {
   max-width: 1400px;
+
   margin: 0 auto;
-  padding: 1rem clamp(1rem, 4vw, 3rem) 4rem;
+
+  padding:
+    1rem
+    clamp(1rem, 4vw, 3rem)
+    4rem;
 }
 
 .learn-section > h2 {
   margin: 0.5rem 0 1.5rem;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+
+  font-size:
+    calc(clamp(1.7rem, 4vw, 2.4rem) * var(--text-scale));
+
   font-weight: 900;
 }
 
 .concept-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   gap: 1.25rem;
 }
 
 .concept-card {
   padding: 1.5rem;
+
   border: 1px solid var(--border);
+
   border-radius: 1rem;
+
   background: var(--surface);
 }
 
 .concept-card h3 {
   margin: 0.5rem 0;
-  font-size: 1.2rem;
+
+  font-size:
+    calc(1.2rem * var(--text-scale));
 }
 
 .concept-card p {
   color: var(--muted);
-  font-size: 0.95rem;
+
+  font-size:
+    calc(0.95rem * var(--text-scale));
 }
 
 .concept-symbol {
   display: inline-grid;
+
   place-items: center;
+
   width: 2.5rem;
   height: 2.5rem;
+
   border-radius: 50%;
-  font-size: 1.3rem;
+
+  font-size:
+    calc(1.3rem * var(--text-scale));
+
   font-weight: 900;
 }
 
 .proton-text {
-  background: #ffe3e3;
-  color: #a32121;
+  background: var(--proton-bg, #ffe3e3);
+
+  color: var(--proton-color, #a32121);
 }
 
 .neutron-text {
-  background: #e5eaf2;
-  color: #34445c;
+  background: var(--neutron-bg, #e5eaf2);
+
+  color: var(--neutron-color, #34445c);
 }
 
 .electron-text {
-  background: #dceeff;
-  color: #14569b;
+  background: var(--electron-bg, #dceeff);
+
+  color: var(--electron-color, #14569b);
 }
 
-/* ===== FOCO E ACESSIBILIDADE ===== */
+
+/* =================================
+   FOCO E ACESSIBILIDADE
+================================= */
 
 .counter-button:focus-visible,
 .reset-button:focus-visible {
   outline: 3px solid var(--focus);
+
   outline-offset: 3px;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+
+/* =================================
+   ALTO CONTRASTE
+================================= */
+
+:root[data-contrast="high"] .controls-panel,
+:root[data-contrast="high"] .atom-panel,
+:root[data-contrast="high"] .info-panel,
+:root[data-contrast="high"] .concept-card,
+:root[data-contrast="high"] .element-card {
+  border-width: 2px;
+}
+
+:root[data-contrast="high"] .counter-input,
+:root[data-contrast="high"] .counter-button,
+:root[data-contrast="high"] .model-button {
+  border-width: 2px;
+}
+
+
+/* =================================
+   RESPONSIVIDADE
+================================= */
 
 @media (max-width: 1100px) {
+
   .workspace {
-    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.4fr);
+    grid-template-columns:
+      minmax(220px, 0.8fr)
+      minmax(0, 1.4fr);
   }
 
   .info-panel {
@@ -425,14 +804,21 @@
 
   .info-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
     column-gap: 1.5rem;
   }
+
 }
 
+
 @media (max-width: 700px) {
+
   .workspace {
     grid-template-columns: 1fr;
+
     padding: 1rem;
   }
 
@@ -451,102 +837,25 @@
   .atom-stage {
     max-width: 500px;
   }
+
 }
 
+
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
     scroll-behavior: auto !important;
+
     transition-duration: 0.01ms !important;
+
     animation-duration: 0.01ms !important;
   }
+
 }
 
-/* TESTE: visualizar corretamente as partículas */
-.nucleus-particle {
-  fill: #e85d5d;
-}
-
-.electron-particle {
-  fill: #2677d4;
-}
-
-.shell-orbit {
-  fill: none;
-  stroke: #999;
-  stroke-width: 2;
-}
-
-.proton-particle {
-  fill: #e85d5d;
-  stroke: var(--surface);
-  stroke-width: 1.5;
-}
-
-.neutron-particle {
-  fill: #64748b;
-  stroke: var(--surface);
-  stroke-width: 1.5;
-}
-
-
-.counter-input {
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  padding: 0.65rem 0.25rem;
-  border: 1px solid var(--border);
-  border-radius: 0.7rem;
-  background: var(--surface-soft);
-  color: var(--text);
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
-}
-
-.counter-input:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
-
-
-/* ===== SELETOR DE MODELOS ===== */
-
-.model-switch {
-  display: flex;
-  flex-wrap: wrap;
+.site-header .main-nav {
+  flex: 1;
   justify-content: center;
-  gap: 0.6rem;
-  margin: 1rem 0;
-}
-
-.model-button {
-  padding: 0.65rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 0.7rem;
-  background: var(--surface-soft);
-  color: var(--text);
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.model-button.active {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
-
-.model-button:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
-/* Pontos da nuvem eletrônica */
-.cloud-electron {
-  fill: #2677d4;
-  opacity: 0.35;
 }

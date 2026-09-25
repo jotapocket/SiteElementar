@@ -1,29 +1,52 @@
-
 const themeToggle = document.querySelector("#themeToggle");
 
-// Aplica o tema salvo pelo Elementar.
-// Se ainda não houver preferência, usa o tema claro.
+
+/* =================================
+   TEMA CLARO / ESCURO
+================================= */
+
 function applyTheme() {
-  const savedTheme = localStorage.getItem("elementar-theme");
+    const savedTheme =
+        localStorage.getItem("elementar-theme") || "light";
 
-  document.body.classList.toggle(
-    "dark-theme",
-    savedTheme === "dark"
-  );
+    document.documentElement.dataset.theme = savedTheme;
 
-  themeToggle.textContent =
-    savedTheme === "dark" ? "☀️" : "🌙";
+    themeToggle.textContent =
+        savedTheme === "dark" ? "☀️" : "🌙";
+
+    themeToggle.setAttribute(
+        "aria-pressed",
+        String(savedTheme === "dark")
+    );
 }
 
+
 themeToggle.addEventListener("click", () => {
-  const isDark = document.body.classList.toggle("dark-theme");
+    const isDark =
+        document.documentElement.dataset.theme !== "dark";
 
-  localStorage.setItem(
-    "elementar-theme",
-    isDark ? "dark" : "light"
-  );
+    const newTheme =
+        isDark ? "dark" : "light";
 
-  themeToggle.textContent = isDark ? "☀️" : "🌙";
+    document.documentElement.dataset.theme = newTheme;
+
+    localStorage.setItem(
+        "elementar-theme",
+        newTheme
+    );
+
+    themeToggle.textContent =
+        isDark ? "☀️" : "🌙";
+
+    themeToggle.setAttribute(
+        "aria-pressed",
+        String(isDark)
+    );
 });
+
+
+/* =================================
+   INICIA A PÁGINA
+================================= */
 
 applyTheme();

@@ -59,7 +59,10 @@ const comparisonResult =
 let activeFilter = "all";
 let selectedNumber = null;
 
-let textScale = 100;
+let textScale =
+  Number(
+    localStorage.getItem("elementar-text-scale")
+  ) || 100;
 
 let comparisonSelection = [];
 
@@ -125,6 +128,11 @@ function updateTextSize() {
     `${textScale / 100}`
   );
 
+  localStorage.setItem(
+    "elementar-text-scale",
+    String(textScale)
+  );
+
   textSizeValue.textContent = `${textScale}%`;
 
   decreaseText.disabled = textScale <= 80;
@@ -155,8 +163,15 @@ contrastToggle.addEventListener("click", () => {
   const enabled =
     document.documentElement.dataset.contrast !== "high";
 
-  document.documentElement.dataset.contrast =
+  const contrast =
     enabled ? "high" : "normal";
+
+  document.documentElement.dataset.contrast = contrast;
+
+  localStorage.setItem(
+    "elementar-contrast",
+    contrast
+  );
 
   contrastToggle.setAttribute(
     "aria-pressed",
@@ -178,8 +193,15 @@ themeToggle.addEventListener("click", () => {
   const dark =
     document.documentElement.dataset.theme !== "dark";
 
-  document.documentElement.dataset.theme =
+  const theme =
     dark ? "dark" : "light";
+
+  document.documentElement.dataset.theme = theme;
+
+  localStorage.setItem(
+    "elementar-theme",
+    theme
+  );
 
   themeToggle.setAttribute(
     "aria-pressed",
@@ -455,6 +477,14 @@ function renderTable() {
     `${filtered.length} de ${elements.length} elementos encontrados.`;
 }
 
+/* =================================
+   LINKS DA WIKIPÉDIA
+================================= */
+
+const wikipediaLinks = {
+  "Rádio": "Rádio_(elemento_químico)",
+  "Índio": "Índio_(elemento_químico)"
+};
 
 /* =================================
    MOSTRA INFORMAÇÕES DO ELEMENTO
@@ -465,10 +495,14 @@ function showDetails(el) {
 
   renderTable();
 
-  const wikipediaUrl =
-    `https://pt.wikipedia.org/wiki/${encodeURIComponent(
-      el.name.replaceAll(" ", "_")
-    )}`;
+  const wikipediaPage =
+  wikipediaLinks[el.name] ||
+  el.name.replaceAll(" ", "_");
+
+const wikipediaUrl =
+  `https://pt.wikipedia.org/wiki/${encodeURIComponent(
+    wikipediaPage
+  )}`;
 
   details.innerHTML = `
     <div class="detail-top">
@@ -645,11 +679,59 @@ filterButtons.forEach((button) => {
   });
 });
 
+/* =================================
+   RESTAURA ESTADO DOS CONTROLES
+================================= */
+
+function restoreAccessibilityControls() {
+  const root = document.documentElement;
+
+  /* Tema */
+
+  const dark =
+    root.dataset.theme === "dark";
+
+  themeToggle.setAttribute(
+    "aria-pressed",
+    String(dark)
+  );
+
+  themeToggle.textContent =
+    dark
+      ? "☀️ Tema claro"
+      : "🌙 Tema escuro";
+
+
+  /* Alto contraste */
+
+  const highContrast =
+    root.dataset.contrast === "high";
+
+  contrastToggle.setAttribute(
+    "aria-pressed",
+    String(highContrast)
+  );
+
+  contrastToggle.textContent =
+    highContrast
+      ? "Desativar alto contraste"
+      : "Ativar alto contraste";
+
+
+  /* Tamanho do texto */
+
+  textScale =
+    Number(
+      localStorage.getItem("elementar-text-scale")
+    ) || 100;
+
+  updateTextSize();
+}
 
 /* =================================
    INICIA A PÁGINA
 ================================= */
 
-updateTextSize();
+restoreAccessibilityControls();
 updateComparisonStatus();
 renderTable();

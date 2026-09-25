@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Elementar | Simulador de Reações</title>
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="../../style.css">
+
+  <!-- Estilo deste experimento -->
+  <link rel="stylesheet" href="reacoes.css">
+
+  <!-- Preferências de acessibilidade -->
+  <script src="../../accessibility.js" defer></script>
+
+  <!-- Lógica do experimento -->
+  <script src="reacoes.js" defer></script>
+
+</head>
+
+<body>
+
+  <!-- ================================
+       NAVEGAÇÃO
+  ================================= -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../../index.html"
+      aria-label="Elementar, página inicial"
+    >
+
+      <span
+        class="brand-mark"
+        aria-hidden="true"
+      >
+        ⚛
+      </span>
+
+      <span>Elementar</span>
+
+    </a>
+
+
+    <nav
+      class="main-nav"
+      aria-label="Navegação principal"
+    >
+
+      <a href="../../index.html">
+        Tabela
+      </a>
+
+      <a href="../labmenu.html">
+        Laboratório
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <section
+      class="hero reaction-hero"
+      aria-labelledby="hero-title"
+    >
+
+      <p class="eyebrow">
+        Laboratório virtual
+      </p>
+
+      <h1 id="hero-title">
+        Simulador de reações.
+      </h1>
+
+      <p>
+        Escolha uma reação e descubra como os átomos
+        se reorganizam para formar novas substâncias.
+      </p>
+
+    </section>
+
+
+    <!-- ================================
+         SIMULADOR
+    ================================= -->
+
+    <section
+      class="reaction-section"
+      aria-label="Simulador de reações químicas"
+    >
+
+      <div class="reaction-layout">
+
+
+        <!-- ============================
+             MENU DE REAÇÕES
+        ============================= -->
+
+        <aside class="reaction-sidebar">
+
+          <div class="sidebar-heading">
+
+            <p class="eyebrow">
+              Experimentos
+            </p>
+
+            <h2>
+              Escolha uma reação
+            </h2>
+
+            <p class="sidebar-description">
+              Selecione uma das experiências abaixo
+              para começar.
+            </p>
+
+          </div>
+
+
+          <div class="reaction-options">
+
+            <button
+              class="reaction-option active"
+              data-reaction="water"
+              type="button"
+            >
+
+              <span class="option-number">
+                01
+              </span>
+
+              <span class="option-content">
+
+                <strong>
+                  Vela e água
+                </strong>
+
+                <small>
+                  Síntese
+                </small>
+
+              </span>
+
+              <span
+                class="option-arrow"
+                aria-hidden="true"
+              >
+                ›
+              </span>
+
+            </button>
+
+
+            <button
+              class="reaction-option"
+              data-reaction="vinegar"
+              type="button"
+            >
+
+              <span class="option-number">
+                02
+              </span>
+
+              <span class="option-content">
+
+                <strong>
+                  Vinagre + bicarbonato
+                </strong>
+
+                <small>
+                  Formação de gás
+                </small>
+
+              </span>
+
+              <span
+                class="option-arrow"
+                aria-hidden="true"
+              >
+                ›
+              </span>
+
+            </button>
+
+
+            <button
+              class="reaction-option"
+              data-reaction="rust"
+              type="button"
+            >
+
+              <span class="option-number">
+                03
+              </span>
+
+              <span class="option-content">
+
+                <strong>
+                  Formação da ferrugem
+                </strong>
+
+                <small>
+                  Oxidação
+                </small>
+
+              </span>
+
+              <span
+                class="option-arrow"
+                aria-hidden="true"
+              >
+                ›
+              </span>
+
+            </button>
+
+
+            <button
+              class="reaction-option"
+              data-reaction="peroxide"
+              type="button"
+            >
+
+              <span class="option-number">
+                04
+              </span>
+
+              <span class="option-content">
+
+                <strong>
+                  Decomposição da água oxigenada
+                </strong>
+
+                <small>
+                  Decomposição
+                </small>
+
+              </span>
+
+              <span
+                class="option-arrow"
+                aria-hidden="true"
+              >
+                ›
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <div class="reaction-sidebar-note">
+
+            <strong>
+              Como funciona?
+            </strong>
+
+            <p>
+              Escolha uma reação, observe os reagentes
+              e inicie a simulação para conhecer
+              os produtos.
+            </p>
+
+          </div>
+
+        </aside>
+
+
+        <!-- ============================
+             ÁREA PRINCIPAL
+        ============================= -->
+
+        <section class="reaction-main">
+
+          <div class="reaction-title-row">
+
+            <div>
+
+              <p
+                class="eyebrow"
+                id="reactionCategory"
+              >
+                Reação de síntese
+              </p>
+
+              <h2 id="reactionTitle">
+                Vela e água
+              </h2>
+
+            </div>
+
+
+            <span
+              class="reaction-status"
+              id="reactionStatus"
+            >
+              Pronto para começar
+            </span>
+
+          </div>
+
+
+          <!-- PALCO -->
+
+          <div
+            class="reaction-stage"
+            id="reactionStage"
+          >
+
+            <div
+              class="stage-label stage-label-left"
+            >
+              REAGENTES
+            </div>
+
+            <div
+              class="stage-label stage-label-right"
+            >
+              PRODUTOS
+            </div>
+
+
+            <svg
+              id="reactionSvg"
+              class="reaction-svg"
+              viewBox="0 0 700 330"
+              role="img"
+              aria-label="Representação visual da reação química"
+            >
+
+              <g id="reactionDiagram"></g>
+
+            </svg>
+
+
+            <div
+              class="stage-placeholder"
+              id="reactionPlaceholder"
+              hidden
+            >
+              Escolha uma reação para começar.
+            </div>
+
+          </div>
+
+
+          <!-- CONTROLES -->
+
+          <div class="reaction-controls">
+
+            <button
+              id="startReaction"
+              class="start-reaction-btn button button-primary"
+              type="button"
+            >
+              ▶ Iniciar reação
+            </button>
+
+            <button
+              id="resetReaction"
+              class="reset-reaction-btn button button-secondary"
+              type="button"
+            >
+              ↻ Reiniciar
+            </button>
+
+          </div>
+
+
+          <!-- EQUAÇÃO -->
+
+          <div class="reaction-equation-card">
+
+            <span class="equation-label">
+              Equação química
+            </span>
+
+            <div
+              id="reactionEquation"
+              class="reaction-equation"
+            >
+              2H₂ + O₂ → 2H₂O
+            </div>
+
+          </div>
+
+
+          <!-- EXPLICAÇÃO -->
+
+          <div class="reaction-explanation">
+
+            <div
+              class="explanation-icon"
+              aria-hidden="true"
+            >
+              i
+            </div>
+
+            <div>
+
+              <h3 id="explanationTitle">
+                O que está acontecendo?
+              </h3>
+
+              <p id="explanationText">
+                Os átomos de hidrogênio e oxigênio
+                se reorganizam para formar moléculas
+                de água.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- ETAPAS -->
+
+          <div
+            class="reaction-steps"
+            id="reactionSteps"
+          >
+
+            <div class="reaction-step">
+
+              <span>1</span>
+
+              <p>
+                Observe os reagentes.
+              </p>
+
+            </div>
+
+
+            <div class="reaction-step">
+
+              <span>2</span>
+
+              <p>
+                Inicie a reação.
+              </p>
+
+            </div>
+
+
+            <div class="reaction-step">
+
+              <span>3</span>
+
+              <p>
+                Observe os produtos.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         APRENDIZADO
+    ================================= -->
+
+    <section
+      class="reaction-learning"
+      aria-labelledby="learning-title"
+    >
+
+      <div>
+
+        <p class="eyebrow">
+          Aprendizado
+        </p>
+
+        <h2 id="learning-title">
+          O que acontece em uma reação?
+        </h2>
+
+        <p>
+          Em uma reação química, os átomos dos reagentes
+          se reorganizam e formam novas substâncias.
+        </p>
+
+      </div>
+
+
+      <div class="learning-highlight">
+
+        <span
+          class="learning-icon"
+          aria-hidden="true"
+        >
+          ✦
+        </span>
+
+        <div>
+
+          <strong>
+            Os átomos são conservados
+          </strong>
+
+          <p>
+            Em uma equação química balanceada,
+            a quantidade de átomos de cada elemento
+            é a mesma antes e depois.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <p class="simulation-disclaimer">
+      Simulações conceituais para fins educativos.
+      As animações não representam todos os detalhes
+      de uma reação real.
+    </p>
+
+  </main>
+
+
+  <!-- ================================
+       RODAPÉ
+  ================================= -->
+
+  <footer class="site-footer">
+
+    <p>
+      Elementar · Projeto educativo de Química
+    </p>
+
+    <a href="../labmenu.html">
+      Voltar ao laboratório
+    </a>
+
+  </footer>
+
+</body>
+
+</html>
